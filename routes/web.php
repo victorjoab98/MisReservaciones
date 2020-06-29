@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Rutas aociadas a specialty
+Route::get('/specialties', 'SpecialtyController@index');
+Route::get('/specialties/create', 'SpecialtyController@create');//solo muestra el formulario de registro
+Route::get('/specialties/{specialty}/edit', 'SpecialtyController@edit');
+Route::post('/specialties', 'SpecialtyController@store');//se envia el form de registro y se guarda en la bd
