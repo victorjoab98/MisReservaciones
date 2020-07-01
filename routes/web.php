@@ -26,3 +26,5 @@ Route::get('/specialties', 'SpecialtyController@index');
 Route::get('/specialties/create', 'SpecialtyController@create');//solo muestra el formulario de registro
 Route::get('/specialties/{specialty}/edit', 'SpecialtyController@edit');
 Route::post('/specialties', 'SpecialtyController@store');//se envia el form de registro y se guarda en la bd
+Route::put('/specialties/{specialty}', 'SpecialtyController@update');
+Route::delete('/specialties/{specialty}', 'SpecialtyController@destroy');

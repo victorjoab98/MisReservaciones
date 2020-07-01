@@ -13,6 +13,16 @@
       </div>
     </div>
   </div>
+
+<!--Notificacion de una nueva Especialidad guardada, solo se mostrara si existe la notification-->
+  @if(session('notification'))<!--se usa session pues la variable viene como redirect-->
+  <div class="card-body">
+    <div class="alert alert-success" role="alert">
+      {{session('notification')}}
+    </div>
+  </div>
+@endif
+
   <div class="table-responsive">
     <!-- Projects table -->
     <table class="table align-items-center table-flush">
@@ -33,8 +43,14 @@
             {{$specialty->description}}
           </td>
           <td>
-            <a href="" class="btn btn-sm btn-primary">Editar</>
-            <a href="" class="btn btn-sm btn-danger">Eliminar</>
+            <form class="" action="{{ url('/specialties/'.$specialty->id) }}" method="post">
+              @csrf
+              @method('DELETE')
+              <!--Probar hacer esto con onclick usar referencia en app.balde.php-->
+              <a href="{{ url('/specialties/'.$specialty->id.'/edit') }}" class="btn btn-sm btn-primary">Editar</a>
+
+              <button href="" class="btn btn-sm btn-danger" type="submit" >Eliminar</button>
+            </form>
           </td>
         </tr>
         @endforeach
