@@ -15,8 +15,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+     //campos que se podran asignar a traves del metodo create
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','dpi', 'address', 'phone', 'role'
     ];
 
     /**
@@ -36,4 +37,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    //Scope para que la vista patients solo muestro los Usuarios pacientes
+    //es vital que el scope se defina como 'scopeEntidad' y se llame como ->entidad()
+    public function scopePatients($query){
+      return $query->where('role', 'patient');
+    }
+
+    //Scope para que la vista doctors solo muestro los Usuarios doctores
+    public function scopeDoctors($query){
+      return $query->where('role', 'doctor');
+    }
 }
