@@ -3,10 +3,12 @@
 Este controlador fue creado con el comando: php artisan make:controller DoctorController --resource
 de esa forma el controlador trae metodos principales creados
 */
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+
+
 class DoctorController extends Controller
 {
     /**

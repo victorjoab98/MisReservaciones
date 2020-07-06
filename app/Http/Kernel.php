@@ -63,5 +63,9 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        //REGISTRAMOS NUESTRO PROPIO Middleware como admin para que lo detecte laravel
+        'admin' =>\App\Http\Middleware\AdminMiddleware::class,
+        'doctor' =>\App\Http\Middleware\DoctorMiddlware::class,
     ];
 }

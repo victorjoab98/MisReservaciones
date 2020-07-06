@@ -29,25 +29,25 @@
   </li>
 @elseif(auth()->user()->role == 'doctor')
   <li class="nav-item">
-    <a class="nav-link" href="/home">
+    <a class="nav-link" href="/schedule">
       <i class="ni ni-tv-2 text-primary"></i> Gestionar Horario
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ url('/specialties') }}">
-      <i class="ni ni-time-alarm text-blue"></i> Mis Citas
+      <i class="ni ni-time-alarm text-default"></i> Mis Citas
     </a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link" href="{{ url('/specialties') }}">
-      <i class="ni ni-planet text-blue"></i> Mis Pacientes
+      <i class="ni ni-planet text-warning"></i> Mis Pacientes
     </a>
   </li>
 @else
   <li class="nav-item">
     <a class="nav-link" href="/home">
-      <i class="ni ni-laptop text-primary"></i> Reservar Cita
+      <i class="ni ni-laptop text-info"></i> Reservar Cita
     </a>
   </li>
   <li class="nav-item">
@@ -55,23 +55,27 @@
       <i class="ni ni-planet text-blue"></i> Especialidades
     </a>
   </li>
-
 @endif
+
 <li class="nav-item">
 
-  <a class="nav-link" href="./examples/tables.html">
-    <i class="ni ni-bullet-list-67 text-red"></i> Tables
-  </a>
+    <a class="nav-link" onclick="event.preventDefault(); document.getElementById('formLogOut').submit();">
+      <i class="ni ni-key-25 text-info"></i>
+      Cerrar Sesion
+    </a>
+    <form action="{{ route('logout') }}" id="formLogOut"
+     method="POST" style="display: none;">
+      @csrf
+    </form>
+<!--
+    <form action="{{ route('logout') }}" id="formLogOut" method="POST" style="display: none;">
+        @csrf
+    </form>
+    <a class="nav-link" onclick="document.getElementById('formLogOut').submit();">{{ __('Log out') }}</a>
+-->
+
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-  document.getElementById('formLogout').submit();">
-    <i class="ni ni-key-25 text-info"></i>Cerrar Sesion
-  </a>
-  <form action="{{ route('logout') }}" method="POST" style="display: none;" id="formLogout">
-    @csrf
-  </form>
-</li>
+
 </ul>
 @if (auth()->user()->role == 'admin')
 <!-- Divider -->
